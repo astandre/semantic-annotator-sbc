@@ -8,6 +8,7 @@ spacy
 SQLAlchemy
 requests-html
 networkx
+beautifulsoup4
 
 
 ## Instalacion

@@ -1,17 +1,19 @@
 import matplotlib.pyplot as plt
 from Models import *
 import networkx as nx
+import csv
 
 
 class Graph:
     nodes = None
     edges = None
-    g = nx.Graph()
+    G = nx.Graph()
 
     def __init__(self, nlp, context_id, session):
         self.nlp = nlp
         self.context_id = context_id
         self.session = session
+        self.create_graph()
 
     def decompose_sentence_to_graph(self, ):
         nodes = []
@@ -47,12 +49,12 @@ class Graph:
 
         # Generating graph
 
-        self.g.add_nodes_from(nodes)
-        self.g.add_edges_from(edges)
+        self.G.add_nodes_from(nodes)
+        self.G.add_edges_from(edges)
 
     def get_graph_centraility(self):
         # Getting degree of nodes
-        degrees = [self.g.degree(node) for node in self.nodes]
+        degrees = [self.G.degree(node) for node in self.nodes]
         print(degrees)
         max_degree = max(degrees)
         min_degree = min(degrees)

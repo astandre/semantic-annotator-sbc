@@ -4,6 +4,7 @@ import spacy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from Models import *
+from graph import *
 
 from decouple import config
 
@@ -34,10 +35,12 @@ text = ff.read()
 
 # Identificacion de informacion
 ii = InformationIdentification(nlp, context_id, session)
+# En este metodo se guardan las sentencias con las oraciones
 ii.handle_raw_data(text)
 
 # Consultas de grafo:
-
+g = Graph(nlp, context_id, session)
+g.draw()
 # TODO anadir consultas de grafo
 
 
@@ -47,6 +50,7 @@ print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
 resources = session.query(Resource).filter(Resource.context_id == context_id)
 for res in resources:
     print(res.name, res.resource)
+#     TODO Anadir aqui las consultas para generar el html
 
 
 # Devolver reporte
