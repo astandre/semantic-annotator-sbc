@@ -1,11 +1,9 @@
 import io
-from information_identification import *
 import spacy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from Models import *
 from graph import *
-
 from decouple import config
 
 nlp = spacy.load("es_core_news_sm")
@@ -32,17 +30,6 @@ else:
 
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
-
-# Identificacion de informacion
-ii = InformationIdentification(nlp, context_id, session)
-# En este metodo se guardan las sentencias con las oraciones
-ii.handle_raw_data(text)
-
-# Consultas de grafo:
-g = Graph(nlp, context_id, session)
-g.draw()
-# TODO anadir consultas de grafo
-
 
 # Anotar semanticamente
 

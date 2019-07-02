@@ -35,7 +35,7 @@ class Resource(Base):
     # pos = Column(String(10), nullable=True)
     type = Column(String(10), nullable=True)
     # TODO set dicctionario for type
-    resource = Column(String(300), nullable=True)
+    # resource = Column(String(300), nullable=True)
     context_id = Column(Integer, ForeignKey('context.id'))
     context = relationship("Context", back_populates="resource")
 
