@@ -1,0 +1,572 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix ns0: <http://cod.utpl.edu.ec/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://arrozverde.utpl.edu.ec/resources/ArrozVerde> a ns0:Caso, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Caso> .
+
+<http://arrozverde.utpl.edu.ec/resources/Ecuador> a ns0:Pais, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Lugar> .
+
+<http://arrozverde.utpl.edu.ec/resources/Jorge_Glass> a ns0:Persona, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona> .
+
+<http://arrozverde.utpl.edu.ec/resources/Alianza_Pais> a ns0:Partido_Politico, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/PartidoPolitico> .
+
+<http://arrozverde.utpl.edu.ec/resources/Lider> a ns0:Rol, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/Negociador> a ns0:Rol, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/Gestionador> a ns0:Rol, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/Recaudador> a ns0:Rol, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/Vicepresidente> a ns0:Ocupacion, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Audio-CP-JS> a ns0:Evidencia .
+
+ns0:Evidencia a owl:Class .
+
+<http://arrozverde.utpl.edu.ec/resources/Cai_Runguo> a ns0:Persona, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  ns0:relacionadoCon <http://arrozverde.utpl.edu.ec/resources/ArrozVerde>;
+  ns0:tieneRol <http://arrozverde.utpl.edu.ec/resources/Lider>, <http://arrozverde.utpl.edu.ec/resources/Negociador>,
+    <http://arrozverde.utpl.edu.ec/resources/Gestionador>, <http://arrozverde.utpl.edu.ec/resources/Recaudador>;
+  foaf:firstName "Cai";
+  ns0:tieneOcupacion <http://arrozverde.utpl.edu.ec/resources/Ex-Embajador>, <http://arrozverde.utpl.edu.ec/resources/Representante>;
+  foaf:surname "Runguo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Ex-Embajador> a ns0:Ocupacion .
+
+<http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO> a ns0:Empresa .
+
+<http://arrozverde.utpl.edu.ec/resources/Rafael_Correa> a ns0:Persona, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona> .
+
+<http://arrozverde.utpl.edu.ec/resources/Oderbrecht> a ns0:Empresa .
+
+ns0:Empresa a owl:Class;
+  rdfs:subClassOf ns0:Organizacion .
+
+<http://arrozverde.utpl.edu.ec/resources/V7> a ns0:Alias, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/Contrato1> a ns0:Contrato, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Contrato>;
+  ns0:monto "4000 millones" .
+
+<http://arrozverde.utpl.edu.ec/resources/V14> a ns0:Alias, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+ns0:Partido_Politico a owl:Class;
+  rdfs:subClassOf ns0:Organizacion .
+
+<http://arrozverde.utpl.edu.ec/resources/JG> a ns0:Alias .
+
+<http://arrozverde.utpl.edu.ec/resources/L1> a ns0:Alias .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion1> a ns0:Transaccion, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  ns0:desde <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  ns0:fecha "9/9/13";
+  ns0:hacia <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  ns0:monto "500000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Aportacion1> a ns0:Aportacion;
+  ns0:desde <http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO>;
+  ns0:fecha "14/1/14";
+  ns0:hacia <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  ns0:metodo "efectivo";
+  ns0:monto "500000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion2> a ns0:Transaccion;
+  ns0:desde <http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO>;
+  ns0:fecha "9/9/13";
+  ns0:hacia <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  ns0:metodo "efectivo";
+  ns0:monto "400000";
+  ns0:tieneAportacion <http://arrozverde.utpl.edu.ec/resources/Aportacion1> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion3> a ns0:Transaccion, <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  ns0:desde <http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO>;
+  ns0:fecha "9/9/13";
+  ns0:hacia <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  ns0:metodo "efectivo";
+  ns0:monto "100000";
+  ns0:tieneAportacion <http://arrozverde.utpl.edu.ec/resources/Aportacion1> .
+
+ns0:Institucion_Publica a owl:Class;
+  rdfs:subClassOf ns0:Organizacion .
+
+<http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa> .
+
+<http://arrozverde.utpl.edu.ec/resources/Jose_Santos> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Odebretch> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa> .
+
+<http://arrozverde.utpl.edu.ec/resources/Geraldo_Pereira_de_Souza> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Carlos_Polit> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_de_los_Angeles_Duarte> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Walter_Solis> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Secretario_Nacional_del_Agua> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Pamela_Martinez_Loayza> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Asesora_de_la_Presidencia_de_la_Republica>
+  a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Augusta_Enríquez_Argudo> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Participante> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/Laura_Teran_Betancourt> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Asistente_de_presidencia> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Victoria_Andrade> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/No_identificado> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Augusta_Enriquez_Argudo> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Monica_Hernandez_Vasconez> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Grupo_Azul>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Grupo_Azul> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa> .
+
+<http://arrozverde.utpl.edu.ec/resources/Tomislav_Topic_Granados> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Telconet>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Telconet> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa> .
+
+<http://arrozverde.utpl.edu.ec/resources/Alexis_Mera> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Secretario_juridico_de_la_Presidencia_del_Ecuador>
+  a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Viviana_Patricia_Bonilla_Salcedo> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Ex_candidata_a_la_Alcaldia_de_Guayaquil> .
+
+<http://arrozverde.utpl.edu.ec/resources/Ex_candidata_a_la_Alcaldia_de_Guayaquil>
+  a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Carlos_Eloy_Viteri> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Bolívar_Sánchez_Ribadeneira> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/distribuidor_dinero> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/JG-L1> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/L2-MD> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/L3-WS> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/C3-PM> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/C1-OM> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/C2-ME> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V8> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V12> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V11> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V9> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V10> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/V> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+<http://arrozverde.utpl.edu.ec/resources/SK_Engineering_Construction> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V8> .
+
+<http://arrozverde.utpl.edu.ec/resources/China_International_Water_Electric_Corp-CWE>
+  a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V9> .
+
+<http://arrozverde.utpl.edu.ec/resources/Constructora_Nacional_Fopeca_y_Sanrib_Corporation>
+  a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V10> .
+
+<http://arrozverde.utpl.edu.ec/resources/NexoGlobal> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Empresa> .
+
+<http://arrozverde.utpl.edu.ec/resources/Asambleista> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Puesto> .
+
+<http://arrozverde.utpl.edu.ec/resources/Aportacion2> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Aportacion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion4> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion5> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion6> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Grupo_Azul>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "20000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion7> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "500000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion8> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "439900" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion9> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "10100" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion10> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Telconet>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "100000";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "1/3/14" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion11> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Telconet>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "1/10/14";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "250000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion12> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Telconet>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "1/15/14";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "150000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion13> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Transaccion>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Telconet>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "1/15/14";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "150000";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Bolivar_Sanchez_Ribadeneira> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Distribuidor_dinero> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Rol> .
+
+<http://arrozverde.utpl.edu.ec/resources/L1-JG> a <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Alias> .
+
+ns0:Persona owl:sameAs foaf:Person .
+
+ns0:Pais owl:sameAs <http://dbpedia.org/ontology/Country> .
+
+<https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/Persona> owl:sameAs
+    foaf:Person .
+
+<http://arrozverde.utpl.edu.ec/resources/Jorge_Glass> ns0:conoceA <http://arrozverde.utpl.edu.ec/resources/Cai_Runguo>,
+    <http://arrozverde.utpl.edu.ec/resources/Rafael_Correa>;
+  ns0:perteneceAPartidoPolitico <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  ns0:relacionadoCon <http://arrozverde.utpl.edu.ec/resources/ArrozVerde>;
+  ns0:tieneEvidencia <http://arrozverde.utpl.edu.ec/resources/Audio-CP-JS>;
+  ns0:tieneOcupacion <http://arrozverde.utpl.edu.ec/resources/Vicepresidente>;
+  ns0:tieneRol <http://arrozverde.utpl.edu.ec/resources/Gestionador>, <http://arrozverde.utpl.edu.ec/resources/Lider>,
+    <http://arrozverde.utpl.edu.ec/resources/Negociador>, <http://arrozverde.utpl.edu.ec/resources/Recaudador>;
+  ns0:vive_en <http://arrozverde.utpl.edu.ec/resources/Ecuador>;
+  foaf:family_name "Glass";
+  foaf:firstName "Jorge";
+  foaf:img "img";
+  foaf:surname "Glass";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Jorge Glass";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Vicepresidente>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/Gestionador>,
+    <http://arrozverde.utpl.edu.ec/resources/Lider>, <http://arrozverde.utpl.edu.ec/resources/Negociador>,
+    <http://arrozverde.utpl.edu.ec/resources/Recaudador>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/vive_en> <http://arrozverde.utpl.edu.ec/resources/Ecuador> .
+
+<http://arrozverde.utpl.edu.ec/resources/Audio-CP-JS> ns0:disponobleEn "https://youtu.be/T_JyBtadg-g";
+  ns0:tipoEvidencia "Audio" .
+
+<http://arrozverde.utpl.edu.ec/resources/Cai_Runguo> ns0:trabajoCon <http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Cai Runguo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Representante>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/Gestionador>,
+    <http://arrozverde.utpl.edu.ec/resources/Lider>, <http://arrozverde.utpl.edu.ec/resources/Negociador>,
+    <http://arrozverde.utpl.edu.ec/resources/Recaudador>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/trabajoEn> <http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation> .
+
+<http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation_CO> ns0:tieneCodigo
+    <http://arrozverde.utpl.edu.ec/resources/V14> .
+
+<http://arrozverde.utpl.edu.ec/resources/Oderbrecht> ns0:manejoContrato <http://arrozverde.utpl.edu.ec/resources/Contrato1>;
+  ns0:tieneCodigo <http://arrozverde.utpl.edu.ec/resources/V7> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion1> ns0:metodo "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde> <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "9/9/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "500000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Rafael_Correa> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Rafael Correa";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/relacionadoCon> <http://arrozverde.utpl.edu.ec/resources/ArrozVerde> .
+
+<http://arrozverde.utpl.edu.ec/resources/Jose_Santos> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Jorge Santos";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Odebretch> .
+
+<http://arrozverde.utpl.edu.ec/resources/Geraldo_Pereira_de_Souza> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Geraldo Pereira de Souza";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/perteneceA> <http://arrozverde.utpl.edu.ec/resources/Odebretch> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_de_los_Angeles_Duarte> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Maria de los Angeles Duarte";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/Gestionador>,
+    <http://arrozverde.utpl.edu.ec/resources/Lider>, <http://arrozverde.utpl.edu.ec/resources/Negociador>,
+    <http://arrozverde.utpl.edu.ec/resources/Recaudador> .
+
+<http://arrozverde.utpl.edu.ec/resources/Walter_Solis> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Walter Solis";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Secretario_Nacional_del_Agua>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/Gestionador>,
+    <http://arrozverde.utpl.edu.ec/resources/Lider>, <http://arrozverde.utpl.edu.ec/resources/Negociador>,
+    <http://arrozverde.utpl.edu.ec/resources/Recaudador> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Augusta_Enríquez_Argudo> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol>
+    <http://arrozverde.utpl.edu.ec/resources/Participante> .
+
+<http://arrozverde.utpl.edu.ec/resources/Laura_Teran_Betancourt> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Laura Teram Betancourt";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Asistente_de_presidencia>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/recaudador> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Augusta_Enriquez_Argudo> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Maria Augusta Enriquez Argudo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Asesora_de_la_Presidencia_de_la_Republica>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneRol> <http://arrozverde.utpl.edu.ec/resources/Participante>,
+    <http://arrozverde.utpl.edu.ec/resources/participante> .
+
+<http://arrozverde.utpl.edu.ec/resources/Maria_Pamela_Martinez_Loayza> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Maria Pamela Martinez Loayza";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Asesora_de_la_Presidencia_de_la_Republica> .
+
+<http://arrozverde.utpl.edu.ec/resources/Victoria_Andrade> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Victoria Andrade";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Asistente_de_presidencia> .
+
+<http://arrozverde.utpl.edu.ec/resources/Alexis_Mera> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Alexis Mora";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tienePuesto> <http://arrozverde.utpl.edu.ec/resources/Secretario_juridico_de_la_Presidencia_del_Ecuador> .
+
+<http://arrozverde.utpl.edu.ec/resources/Sinohydro_Corporation> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Sinohydro Corporation";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V14> .
+
+<http://arrozverde.utpl.edu.ec/resources/Odebretch> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Norberto Odebretch";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V7> .
+
+<http://arrozverde.utpl.edu.ec/resources/Grupo_Azul> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "William Phillips Grupo Azul";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V12> .
+
+<http://arrozverde.utpl.edu.ec/resources/Telconet> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Tomislav Topic Telconet";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/tieneAlias> <http://arrozverde.utpl.edu.ec/resources/V11> .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion3> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/desde>
+    <http://arrozverde.utpl.edu.ec/resources/Oderbrecht>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha> "11/12/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/hacia> <http://arrozverde.utpl.edu.ec/resources/Alianza_Pais>;
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "150000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Contrato1> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto>
+    "4000 millones" .
+
+<http://arrozverde.utpl.edu.ec/resources/Aportacion2> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "10/21/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "500000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion4> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "11/21/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "300000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion5> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "12/02/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/monto> "100000" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion6> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "12/09/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion7> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "12/16/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion8> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "12/17/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion9> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/fecha>
+    "12/18/13";
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo> "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion10> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo>
+    "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion11> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo>
+    "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Transaccion12> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/metodo>
+    "efectivo" .
+
+<http://arrozverde.utpl.edu.ec/resources/ArrozVerde> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Arroz Verde" .
+
+<http://arrozverde.utpl.edu.ec/resources/Ecuador> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Ecuador" .
+
+<http://arrozverde.utpl.edu.ec/resources/Alianza_Pais> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Alianza Pais" .
+
+<http://arrozverde.utpl.edu.ec/resources/Lider> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Lider" .
+
+<http://arrozverde.utpl.edu.ec/resources/Negociador> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Negociador" .
+
+<http://arrozverde.utpl.edu.ec/resources/Gestionador> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Gestionador" .
+
+<http://arrozverde.utpl.edu.ec/resources/Recaudador> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Recaudador" .
+
+<http://arrozverde.utpl.edu.ec/resources/Vicepresidente> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Vicepresidente" .
+
+<http://arrozverde.utpl.edu.ec/resources/V7> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V7" .
+
+<http://arrozverde.utpl.edu.ec/resources/V14> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V14" .
+
+<http://arrozverde.utpl.edu.ec/resources/Carlos_Polit> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Carlos Polit" .
+
+<http://arrozverde.utpl.edu.ec/resources/Secretario_Nacional_del_Agua> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Secretario Nacional del Agua" .
+
+<http://arrozverde.utpl.edu.ec/resources/Asesora_de_la_Presidencia_de_la_Republica>
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Asesora de la Presidencia de la Republica" .
+
+<http://arrozverde.utpl.edu.ec/resources/Participante> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Participante" .
+
+<http://arrozverde.utpl.edu.ec/resources/Asistente_de_presidencia> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Asistente de presidencia" .
+
+<http://arrozverde.utpl.edu.ec/resources/No_identificado> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "No identificado" .
+
+<http://arrozverde.utpl.edu.ec/resources/Monica_Hernandez_Vasconez> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Monica Hernandez Vasconez" .
+
+<http://arrozverde.utpl.edu.ec/resources/Tomislav_Topic_Granados> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Tomislav Topic Grandados" .
+
+<http://arrozverde.utpl.edu.ec/resources/Secretario_juridico_de_la_Presidencia_del_Ecuador>
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Secretario juridico de la Presidencia del Ecuador" .
+
+<http://arrozverde.utpl.edu.ec/resources/Viviana_Patricia_Bonilla_Salcedo> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Viviana Patricia Bonilla Salcedo" .
+
+<http://arrozverde.utpl.edu.ec/resources/Ex_candidata_a_la_Alcaldia_de_Guayaquil>
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Ex Candidata a la Alcaldia de Guayaquil" .
+
+<http://arrozverde.utpl.edu.ec/resources/Carlos_Eloy_Viteri> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Carlos Eloy Viteri" .
+
+<http://arrozverde.utpl.edu.ec/resources/L2-MD> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "L2-MD" .
+
+<http://arrozverde.utpl.edu.ec/resources/L3-WS> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "L3-WS" .
+
+<http://arrozverde.utpl.edu.ec/resources/C3-PM> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "C3-PM" .
+
+<http://arrozverde.utpl.edu.ec/resources/C1-OM> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "C1-OM" .
+
+<http://arrozverde.utpl.edu.ec/resources/C2-ME> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "C2-ME" .
+
+<http://arrozverde.utpl.edu.ec/resources/V8> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V8" .
+
+<http://arrozverde.utpl.edu.ec/resources/V12> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V12" .
+
+<http://arrozverde.utpl.edu.ec/resources/V11> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V11" .
+
+<http://arrozverde.utpl.edu.ec/resources/V9> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V9" .
+
+<http://arrozverde.utpl.edu.ec/resources/V10> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "V10" .
+
+<http://arrozverde.utpl.edu.ec/resources/SK_Engineering_Construction> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "SK South Korea Engineering & Construction" .
+
+<http://arrozverde.utpl.edu.ec/resources/China_International_Water_Electric_Corp-CWE>
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "China International Water & Electric Corp-CWE " .
+
+<http://arrozverde.utpl.edu.ec/resources/Constructora_Nacional_Fopeca_y_Sanrib_Corporation>
+  <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name> "Constructora Nacional Fopeca y Sanrib Corporation" .
+
+<http://arrozverde.utpl.edu.ec/resources/NexoGlobal> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "NexoGlobal" .
+
+<http://arrozverde.utpl.edu.ec/resources/Asambleista> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Asambleista" .
+
+<http://arrozverde.utpl.edu.ec/resources/Bolivar_Sanchez_Ribadeneira> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Bolivar Sanchez Ribadeneira" .
+
+<http://arrozverde.utpl.edu.ec/resources/Distribuidor_dinero> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "Distribuidor del dinero" .
+
+<http://arrozverde.utpl.edu.ec/resources/L1-JG> <https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/name>
+    "L1-JG" .
