@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import exists
@@ -35,7 +35,7 @@ class Resource(Base):
     # pos = Column(String(10), nullable=True)
     type = Column(String(10), nullable=True)
     # TODO set dicctionario for type
-    resource = Column(String(300), nullable=True)
+    potential = Column(Boolean, nullable=True)
     context_id = Column(Integer, ForeignKey('context.id'))
     context = relationship("Context", back_populates="resource")
 

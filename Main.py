@@ -1,11 +1,11 @@
 import io
-from information_identification import *
 import spacy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from Models import *
 from graph import *
 import sqlalchemy as db
+
 from decouple import config
 import webbrowser
 # from rdflib.namespace import RDF
@@ -40,10 +40,11 @@ else:
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
 
+
 # Identificacion de informacion
-ii = InformationIdentification(nlp, context_id, session)
+# ii = InformationIdentification(nlp, context_id, session)
 # En este metodo se guardan las sentencias con las oraciones
-ii.handle_raw_data(text)
+## ii.handle_raw_data(text)
 
 # Consultas de grafo:
 g = Graph(nlp, context_id, session)
@@ -53,7 +54,6 @@ g = Graph(nlp, context_id, session)
 
 # TODO anadir consultas de grafo
 
-
 # Anotar semanticamente
 
 def presente_triples(lista):
@@ -61,6 +61,7 @@ def presente_triples(lista):
         print(i)
 
 print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
+
 grafo_av = rdflib.Graph()
 grafo_av.parse("statements.ttl", format="ttl")
 n = rdflib.Namespace(
@@ -94,6 +95,12 @@ for word in list_text:
 # for s, p, o in grafo_av:
 #    if (None, None, rdflib.Literal(o)) not in g:
 #        raise Exception("It better be!")
+
+#resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
+#for res in resources:
+#    print(res.name)
+#     TODO Anadir aqui las consultas para generar el html
+
 
 # for res in lista:
 #     for s, p, o in grafo_av.triples((None, n['name'], rdflib.Literal(res))):
