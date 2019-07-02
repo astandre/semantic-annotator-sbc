@@ -13,7 +13,6 @@ import webbrowser
 import pprint
 import rdflib
 
-
 nlp = spacy.load("es_core_news_sm")
 
 engine = create_engine(config('DATA_BASE'), echo=False, encoding='utf8', case_sensitive=True)
@@ -33,13 +32,8 @@ else:
     session.commit()
     context_id = context.id
 
-# Extraccion de informacion de HTML
-
-# TODO extraer data de pagina web
-
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
-
 
 # Identificacion de informacion
 # ii = InformationIdentification(nlp, context_id, session)
@@ -48,8 +42,9 @@ text = ff.read()
 
 # Consultas de grafo:
 g = Graph(nlp, context_id, session)
-# g.draw()
 
+
+# g.draw()
 
 
 # TODO anadir consultas de grafo
@@ -60,7 +55,8 @@ def presente_triples(lista):
     for i in lista:
         print(i)
 
-print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
+
+print("Most important nodes".center(30, "+"))
 
 grafo_av = rdflib.Graph()
 grafo_av.parse("statements.ttl", format="ttl")
@@ -72,15 +68,14 @@ lista = ["Rafael Correa", "Jorge Glass"]
 
 words = session.query(Word).filter()
 
-list_text  = [text.split(' ')]
-
+list_text = [text.split(' ')]
 
 for word in list_text:
     text = []
     for s, p, o in grafo_av.triples((None, None, None)):
         text.append(o)
     for i in text:
-        if(str(i).find(str(word))):
+        if (str(i).find(str(word))):
             print("Ok")
         # print(str(i).find("Lider"))
         # if t.find(word):
@@ -96,8 +91,8 @@ for word in list_text:
 #    if (None, None, rdflib.Literal(o)) not in g:
 #        raise Exception("It better be!")
 
-#resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
-#for res in resources:
+# resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
+# for res in resources:
 #    print(res.name)
 #     TODO Anadir aqui las consultas para generar el html
 
@@ -124,4 +119,3 @@ for word in list_text:
 #                 <p>{1}</p>
 #                 </body>
 #                 # </html>""".format("Anotador Semantico", text)
-

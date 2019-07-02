@@ -92,3 +92,5 @@ for link in links:
     print("Entities found!".center(30, "+"))
 
     ii.get_entities(sentences)
+
+print("Finished".center(30, "+"))
