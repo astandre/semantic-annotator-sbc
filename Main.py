@@ -39,5 +39,3 @@ for res in resources:
     print(res.name)
 #     TODO Anadir aqui las consultas para generar el html
 
-
-# Devolver reporte
