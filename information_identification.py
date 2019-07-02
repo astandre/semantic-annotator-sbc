@@ -1,4 +1,5 @@
 from Models import *
+from sqlalchemy import update
 
 
 class InformationIdentification:
@@ -30,15 +31,17 @@ class InformationIdentification:
             self.handle_sentences(token.text)
 
     def get_entities(self, sentences):
-
         for sent in sentences:
             doc = self.nlp(sent.sentence)
             for ent in doc.ents:
                 print(ent.text, ent.label_)
                 if ent.label_ != "None" and not Resource.check_resource(self.session, ent.text, self.context_id):
                     print("Resource %s not found!" % ent.text)
-                    resource = Resource(name=ent.text, type=ent.label_, context_id=self.context_id)
+                    resource = Resource(name=ent.text, type=ent.label_, context_id=self.context_id, potential=True)
                     self.session.add(resource)
                 else:
-                    print("Resource  %s found!" % ent.text)
+                    print("Resource  %s found! Updating" % ent.text)
+                    resource = self.session.query(Resource).filter(Resource.name == ent.text).scalar()
+                    resource.potential = False
+                    self.session.add(resource)
         self.session.commit()

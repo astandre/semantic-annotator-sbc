@@ -64,13 +64,13 @@ class Graph:
         for node in new_nodes:
             if not Resource.check_resource(self.session, node, self.context_id):
                 print("Resource %s not found!" % node)
-                resource = Resource(name=node, type="W", context_id=self.context_id)
+                resource = Resource(name=node, type="W", context_id=self.context_id, potential=False)
                 self.session.add(resource)
             else:
                 print("Resource  %s found!" % node)
         self.session.commit()
 
-        return self.session.query(Resource).filter(Resource.context_id == self.context_id)
+        return self.session.query(Resource).filter(Resource.context_id == self.context_id, Resource.potential == False)
 
     def draw(self):
         # nx.draw_planar(self.G, with_labels=True, font_weight='bold')

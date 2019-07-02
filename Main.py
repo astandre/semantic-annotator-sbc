@@ -34,9 +34,9 @@ text = ff.read()
 # Anotar semanticamente
 
 print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
-resources = session.query(Resource).filter(Resource.context_id == context_id)
+resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
 for res in resources:
-    print(res.name, res.resource)
+    print(res.name)
 #     TODO Anadir aqui las consultas para generar el html
 
 
