@@ -5,28 +5,26 @@ from sqlalchemy.orm import sessionmaker
 from Models import *
 from graph import *
 import sqlalchemy as db
-
-from decouple import config
-import webbrowser
-# from rdflib.namespace import RDF
-# from rdflib import URIRef, BNode, Literal, Namespace, Graph
-import pprint
+from  utils import dict_triples, formato_html
+import re
 import rdflib
+import  webbrowser
 
+from information_identification import InformationIdentification
 
 nlp = spacy.load("es_core_news_sm")
 
-engine = create_engine(config('DATA_BASE'), echo=False, encoding='utf8', case_sensitive=True)
+engine = db.create_engine('sqlite:///corruption.sqlite')
 
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
 context = "Arroz Verde"
+
 # Adding default contexts
 if Context.check_context(session, context):
-    context_id = session.query(Context.id).filter(
-        Context.context == context).scalar()
+    context_id = session.query(Context.id).filter(Context.context == context).scalar()
 else:
     context = Context(context=context)
     session.add(context)
@@ -39,89 +37,61 @@ else:
 
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
+ii = InformationIdentification(nlp, context_id, session)
+#En este metodo se guardan las sentencias con las oraciones
+ii.handle_raw_data(text)
 
-
-# Identificacion de informacion
-# ii = InformationIdentification(nlp, context_id, session)
-# En este metodo se guardan las sentencias con las oraciones
-## ii.handle_raw_data(text)
-
-# Consultas de grafo:
-g = Graph(nlp, context_id, session)
-# g.draw()
-
-
-
-# TODO anadir consultas de grafo
-
-# Anotar semanticamente
-
-def presente_triples(lista):
-    for i in lista:
-        print(i)
 
 print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
-
+# declaro la clase grafo para poder consultar el grafo
 grafo_av = rdflib.Graph()
+# Nuestro archivo ttl
 grafo_av.parse("statements.ttl", format="ttl")
-n = rdflib.Namespace(
-    "https://mmisw.org/ont/?iri=http://www.arrozverde.org/ontology/")
-resources = session.query(Resource).filter()
-data = []
-lista = ["Rafael Correa", "Jorge Glass"]
 
-words = session.query(Word).filter()
+keywords = []
 
-list_text  = [text.split(' ')]
+resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
+for res in resources:
+    for s, p, o in grafo_av.triples((None,None, rdflib.Literal(res.name))):
+        keywords.append(res.name)
+        query_result_graph = rdflib.Graph()
+        query_result_graph += grafo_av.triples((s, None, None))
+        #lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
+        f = open('/home/tony/repositorios/' + o + ".html", 'w')
+        message = """<html>
+        <head></head>
+        <body>
+        <h1>{0}</h1>
+        {1}
+        </body>
+        </html>""".format(o, formato_html(dict_triples(query_result_graph)))
+        f.write(message)
+        f.close()
 
+sentences = session.query(Sentence)
+list_sentences =[]
+for sentence in sentences:
+    list_sentences.append(sentence.sentence)
+dict_k = {}
+for i in keywords:
+    dict_k[i] = i
 
-for word in list_text:
-    text = []
-    for s, p, o in grafo_av.triples((None, None, None)):
-        text.append(o)
-    for i in text:
-        if(str(i).find(str(word))):
-            print("Ok")
-        # print(str(i).find("Lider"))
-        # if t.find(word):
-        #     for s, p, o in grafo_av.triples((None, None, rdflib.Literal(word))):
-        #         query_result_graph = rdflib.Graph()
-        #         query_result_graph += grafo_av.triples((s,None,None))
-        #         lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
-        #         for s,p,o in query_result_graph.triples((None,None,None)):
-        #             print(s)
-        #             print(o)
+# for i in list_sentences:
+#     print(i)
+completa = ''.join(e for e in list_sentences)
+link = "/home/tony/repositorios/"
+for i ,j in dict_k.items():
+    completa = completa.replace(i,"<a href=\""+link+i+".html\">"+i+"</a>")
+print(completa)
 
-# for s, p, o in grafo_av:
-#    if (None, None, rdflib.Literal(o)) not in g:
-#        raise Exception("It better be!")
-
-#resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
-#for res in resources:
-#    print(res.name)
-#     TODO Anadir aqui las consultas para generar el html
-
-# for res in lista:
-#     for s, p, o in grafo_av.triples((None, n['name'], rdflib.Literal(res))):
-#         query_result_graph = rdflib.Graph()
-#         query_result_graph += grafo_av.triples((s,None,None))
-#         lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
-#         data.append(query_result_graph)
-#         f = open('/home/tony/repositorios/semantic-annotator-sbc/' + o + ".html", 'w')
-#         message = """<html>
-#                 <head></head>
-#                 <body><h1>{0}</h1>
-#                 <p>{1}</p>
-#                 </body>
-#                 </html>""".format(o, lista_triple)
-#         f.write(message)
-#         f.close()
-#
-#         semantic_ana = open('/home/tony/repositorios/semantic-annotator-sbc/seman.html', 'w')
-#         message = """<html>
-#                 <head></head>
-#                 <body><h1>{0}</h1>
-#                 <p>{1}</p>
-#                 </body>
-#                 # </html>""".format("Anotador Semantico", text)
-
+index = open('/home/tony/repositorios/index.html', 'w')
+message = """<html>
+                <head></head>
+                <body><h1>{0}</h1>
+                <p>{1}</p>
+                </body>
+                # </html>""".format("Anotador Semantico", completa)
+index.write(message)
+index.close()
+filename = "/home/tony/repositorios/index.html"
+webbrowser.open_new_tab(filename)

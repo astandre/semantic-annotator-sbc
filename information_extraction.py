@@ -6,10 +6,12 @@ from sqlalchemy import create_engine
 import spacy
 from decouple import config
 import re
+import sqlalchemy as db
+
 
 nlp = spacy.load("es_core_news_sm")
 
-engine = create_engine(config('DATA_BASE'), echo=False, encoding='utf8', case_sensitive=True)
+engine = db.create_engine('sqlite:///corruption.sqlite')
 
 Base.metadata.create_all(engine)
 
