@@ -3,6 +3,12 @@ from Models import *
 import networkx as nx
 import csv
 
+import spacy
+import sqlalchemy as db
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+from Models import *
+
 
 class Graph:
     nodes = None
@@ -96,3 +102,38 @@ class Graph:
             writer.writeheader()
             for edge in self.edges:
                 writer.writerow({'source': edge[0], 'target': edge[1]})
+
+    def measure_nodes(self):
+        count_nodes = []
+        for n in list(self.G.nodes()):
+            knn = self.G.neighbors(n)
+            nnKnn = len(list(self.G.neighbors(n)))
+            #append(node,num_neighbors,neighbors)
+            count_nodes.append([n,nnKnn,list(knn)])
+        count_nodes.sort(key=lambda x: x[1], reverse=True)
+        for i in count_nodes:
+            print('\n\n{0} - {1} -> {2}'.format(i[0],i[1],i[2]))
+
+nlp = spacy.load("es_core_news_sm")
+
+engine =db.create_engine('sqlite:///corruption.sqlite')
+
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+context = "Arroz Verde"
+# Adding default contexts
+if Context.check_context(session, context):
+    context_id = session.query(Context.id).filter(
+        Context.context == context).scalar()
+else:
+    context = Context(context=context)
+    session.add(context)
+    session.commit()
+    context_id = context.id
+
+# Consultas de grafo:
+g = Graph(nlp, context_id, session)
+g.measure_nodes()
+g.draw()
