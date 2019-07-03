@@ -5,42 +5,49 @@ from sqlalchemy.orm import sessionmaker
 from Models import *
 from graph import *
 import sqlalchemy as db
+import webbrowser
 from  utils import dict_triples, formato_html
 import re
 import rdflib
 import  webbrowser
 
-from information_identification import InformationIdentification
-
 nlp = spacy.load("es_core_news_sm")
 
-engine = db.create_engine('sqlite:///corruption.sqlite')
+engine =db.create_engine('sqlite:///corruption.sqlite')
 
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
 session = Session()
 context = "Arroz Verde"
-
 # Adding default contexts
 if Context.check_context(session, context):
-    context_id = session.query(Context.id).filter(Context.context == context).scalar()
+    context_id = session.query(Context.id).filter(
+        Context.context == context).scalar()
 else:
     context = Context(context=context)
     session.add(context)
     session.commit()
     context_id = context.id
 
-# Extraccion de informacion de HTML
-
-# TODO extraer data de pagina web
-
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
-ii = InformationIdentification(nlp, context_id, session)
-#En este metodo se guardan las sentencias con las oraciones
-ii.handle_raw_data(text)
 
+# Identificacion de informacion
+# ii = InformationIdentification(nlp, context_id, session)
+# En este metodo se guardan las sentencias con las oraciones
+## ii.handle_raw_data(text)
+
+# Consultas de grafo:
+g = Graph(nlp, context_id, session)
+
+
+# g.draw()
+
+
+# TODO anadir consultas de grafo
+
+# Anotar semanticamente
 
 print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
 # declaro la clase grafo para poder consultar el grafo

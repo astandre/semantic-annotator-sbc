@@ -51,7 +51,7 @@ class Sentence(Base):
     __tablename__ = 'sentence'
 
     id = Column(Integer, primary_key=True)
-    sentence = Column(String(300), nullable=False)
+    sentence = Column(String(700), nullable=False)
     word = relationship("Word", back_populates="sentence")
     context_id = Column(Integer, ForeignKey('context.id'))
     context = relationship("Context", back_populates="sentence")
