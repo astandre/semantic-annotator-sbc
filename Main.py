@@ -6,14 +6,14 @@ from Models import *
 from graph import *
 import sqlalchemy as db
 import webbrowser
-from  utils import dict_triples, formato_html
+from utils import dict_triples, formato_html
 import re
 import rdflib
-import  webbrowser
+import webbrowser
 
 nlp = spacy.load("es_core_news_sm")
 
-engine =db.create_engine('sqlite:///corruption.sqlite')
+engine = db.create_engine('sqlite:///corruption.sqlite')
 
 Base.metadata.create_all(engine)
 
@@ -36,7 +36,7 @@ text = ff.read()
 # Identificacion de informacion
 # ii = InformationIdentification(nlp, context_id, session)
 # En este metodo se guardan las sentencias con las oraciones
-## ii.handle_raw_data(text)
+# ii.handle_raw_data(text)
 
 # Consultas de grafo:
 g = Graph(nlp, context_id, session)
@@ -53,13 +53,14 @@ print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
 # declaro la clase grafo para poder consultar el grafo
 grafo_av = rdflib.Graph()
 # Nuestro archivo ttl
-grafo_av.parse("statements.ttl", format="ttl")
+grafo_av.parse("statements.rdf", format="xml")
 
 keywords = []
 
-resources = session.query(Resource).filter(Resource.context_id == context_id, Resource.potential == False)
+resources = session.query(Resource).filter(
+    Resource.context_id == context_id, Resource.potential == False)
 for res in resources:
-    for s, p, o in grafo_av.triples((None,None, rdflib.Literal(res.name))):
+    for s, p, o in grafo_av.triples((None, None, rdflib.Literal(res.name))):
         keywords.append(res.name)
         query_result_graph = rdflib.Graph()
         query_result_graph += grafo_av.triples((s, None, None))
@@ -75,20 +76,29 @@ for res in resources:
         f.write(message)
         f.close()
 
+
 sentences = session.query(Sentence)
-list_sentences =[]
-for sentence in sentences:
-    list_sentences.append(sentence.sentence)
+list_sentences = []
+# for sentence in sentences:
+#   list_sentences.append(sentence.sentence)
+
+text = nlp(text)
+for sent in text.sents:
+    list_sentences.append(sent.text)
+
+
 dict_k = {}
 for i in keywords:
     dict_k[i] = i
 
+print(dict_k)
+print("\n")
 # for i in list_sentences:
 #     print(i)
 completa = ''.join(e for e in list_sentences)
 link = "/home/tony/repositorios/"
-for i ,j in dict_k.items():
-    completa = completa.replace(i,"<a href=\""+link+i+".html\">"+i+"</a>")
+for i, j in dict_k.items():
+    completa = completa.replace(i, "<a href=\""+link+i+".html\">"+i+"</a>")
 print(completa)
 
 index = open('/home/tony/repositorios/index.html', 'w')
@@ -97,7 +107,7 @@ message = """<html>
                 <body><h1>{0}</h1>
                 <p>{1}</p>
                 </body>
-                # </html>""".format("Anotador Semantico", completa)
+                # </html>""".format("Anotador Semántico", completa)
 index.write(message)
 index.close()
 filename = "/home/tony/repositorios/index.html"
