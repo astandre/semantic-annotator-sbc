@@ -111,7 +111,6 @@ styles = """
     h1{
         text-align: center;
         padding: 1em 0;
-        color: #3399ff;
     }
     #cont_main{
         width: 90%;
@@ -120,8 +119,7 @@ styles = """
         border: 1px solid #ccc;
     }
     #cont_main:hover{
-        border: 1px solid #3399ff;
-        box-shadow: 0 0 6px rgba(35, 173, 255, 1);
+        box-shadow: 0 0 3px rgba(89, 89, 89, 1);
     }
 """
 
