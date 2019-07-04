@@ -1,24 +1,33 @@
 import io
 import spacy
-from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from Models import *
-from graph import *
 import sqlalchemy as db
-import webbrowser
 from utils import dict_triples, formato_html
-import re
 import rdflib
 import webbrowser
+import os
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
 nlp = spacy.load("es_core_news_sm")
 
 engine = db.create_engine('sqlite:///corruption.sqlite')
 
 Base.metadata.create_all(engine)
 
+# Create directory
+try:
+    # Create target Directory
+    os.mkdir(dir_path + '/repositorios/')
+    print("Directory /repositorios/ Created ")
+except FileExistsError:
+    print("Directory /repositorios/ Exists ")
+
+# DB connection
 Session = sessionmaker(bind=engine)
 session = Session()
+
+#  Default context
 context = "Arroz Verde"
 # Adding default contexts
 if Context.check_context(session, context):
@@ -30,33 +39,19 @@ else:
     session.commit()
     context_id = context.id
 
+# Reading text to annotate
 ff = io.open("text.txt", 'r', encoding='utf-8')
 text = ff.read()
 
-# Identificacion de informacion
-# ii = InformationIdentification(nlp, context_id, session)
-# En este metodo se guardan las sentencias con las oraciones
-# ii.handle_raw_data(text)
-
-# Consultas de grafo:
-g = Graph(nlp, context_id, session)
-
-
-# g.draw()
-
-
-# TODO anadir consultas de grafo
-
-# Anotar semanticamente
-
-print(">>>>>>>>>>>>Most important nodes<<<<<<<<<<<<<<<<<")
-# declaro la clase grafo para poder consultar el grafo
+print("Reading graph".center(30, "+"))
+# Reading graph
 grafo_av = rdflib.Graph()
 # Nuestro archivo ttl
 grafo_av.parse("statements.rdf", format="xml")
 
 keywords = []
 
+print("Getting resources to annotate".center(30, "+"))
 resources = session.query(Resource).filter(
     Resource.context_id == context_id, Resource.potential == False)
 for res in resources:
@@ -64,8 +59,9 @@ for res in resources:
         keywords.append(res.name)
         query_result_graph = rdflib.Graph()
         query_result_graph += grafo_av.triples((s, None, None))
-        #lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
-        f = open('/home/tony/repositorios/' + o + ".html", 'w')
+        # lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
+        f = open(dir_path + '/repositorios/' + o + ".html",
+                 'w')
         message = """<html>
         <head></head>
         <body>
@@ -76,39 +72,50 @@ for res in resources:
         f.write(message)
         f.close()
 
-
 sentences = session.query(Sentence)
 list_sentences = []
 # for sentence in sentences:
 #   list_sentences.append(sentence.sentence)
-
+print("Converting text".center(30, "+"))
 text = nlp(text)
 for sent in text.sents:
     list_sentences.append(sent.text)
-
-
+print("Annotating".center(30, "+"))
 dict_k = {}
 for i in keywords:
     dict_k[i] = i
 
+print("Resources used".center(30, "+"))
+
 print(dict_k)
+
 print("\n")
 # for i in list_sentences:
 #     print(i)
 completa = ''.join(e for e in list_sentences)
-link = "/home/tony/repositorios/"
+link = dir_path + "/repositorios/"
 for i, j in dict_k.items():
-    completa = completa.replace(i, "<a href=\""+link+i+".html\">"+i+"</a>")
+    completa = completa.replace(i, "<a href=\"" + link + i + ".html\">" + i + "</a>")
+
+print("Appending info".center(30, "+"))
 print(completa)
 
-index = open('/home/tony/repositorios/index.html', 'w')
+try:
+    index = open(dir_path + '/repositorios/index.html', 'w')
+except IOError:
+    index = open(dir_path + '/repositorios/index.html', 'x')
+    index.close()
+    print("Creating index.html".center(30, "+"))
+
 message = """<html>
-                <head></head>
-                <body><h1>{0}</h1>
-                <p>{1}</p>
-                </body>
-                # </html>""".format("Anotador Semántico", completa)
+                    <head></head>
+                    <body><h1>{0}</h1>
+                    <p>{1}</p>
+                    </body>
+                </html>""".format("Anotador Semántico", completa)
 index.write(message)
 index.close()
-filename = "/home/tony/repositorios/index.html"
+
+print("Opening file".center(30, "+"))
+filename = dir_path + "/repositorios/index.html"
 webbrowser.open_new_tab(filename)

@@ -1,5 +1,9 @@
 # Data base
-av.db
+corruption.sqlite
+
+# Repositorios
+
+repositorios/*.*
 
 .idea/*.*
 
