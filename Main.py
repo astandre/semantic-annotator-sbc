@@ -96,12 +96,12 @@ print("\n")
 # for i in list_sentences:
 #     print(i)
 completa = ''.join(e for e in list_sentences)
-link = "/home/tony/repositorios/"
+link = "/home/kfsarango1/repositorios/"
 for i, j in dict_k.items():
     completa = completa.replace(i, "<a href=\""+link+i+".html\">"+i+"</a>")
 print(completa)
 
-index = open('/home/tony/repositorios/index.html', 'w')
+index = open('/home/kfsarango1/repositorios/index.html', 'w')
 message = """<html>
                 <head></head>
                 <body><h1>{0}</h1>
@@ -110,5 +110,5 @@ message = """<html>
                 # </html>""".format("Anotador Semántico", completa)
 index.write(message)
 index.close()
-filename = "/home/tony/repositorios/index.html"
+filename = "/home/kfsarango1/repositorios/index.html"
 webbrowser.open_new_tab(filename)
