@@ -47,10 +47,13 @@ Definir las variables de entorno para flask, en caso de windows usar set en vez 
 
 ``
 export FLASK_APP=Main.py
+``
+
+``
 export FLASK_ENV=development
 ``
 
-Para ejecutarlo usar el comando
+Para ejecutarlo usar el comando:
 
 ``
 python -m flask run
