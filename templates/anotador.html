@@ -22,21 +22,21 @@
 
 </head>
 <body>
-<h1>Anotador semantico</h1>
-<main>
+
+<div class="container">
+    <h1>Anotador semantico</h1>
     <div class="form-group">
         <label for="raw-text">Ingrese el texto que desee anotar:</label>
         <textarea class="form-control" rows="5" id="raw-text"></textarea>
     </div>
-    <button id="submit" type="button" class="btn btn-primary">Buscar</button>
+    <button id="submit" type="button" class="btn btn-primary">Anotar</button>
     <button id="example" type="button" class="btn  btn-info">Example</button>
     <div id="result">
-
     </div>
     <div id="count">
-
     </div>
-</main>
+</div>
+
 <script type="text/javascript">
     var csrftoken = Cookies.get('csrftoken');
     var URL = "http://127.0.0.1:5000/anotate";
