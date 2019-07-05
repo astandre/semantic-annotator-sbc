@@ -6,6 +6,8 @@ corruption.sqlite
 repositorios/*.*
 
 .idea/*.*
+.idea/dataSources.xml
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

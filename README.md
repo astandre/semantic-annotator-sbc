@@ -42,11 +42,25 @@ DATA_BASE='mysql+pymysql://root: @localhost/test'
 
 ## Uso
 
-Para usar la aplicacion debemos ejecutarla de la siguiente manera:
+Definir las variables de entorno para flask, en caso de windows usar set en vez de export
+
+
 ``
-python Main.py -f text.txt
+export FLASK_APP=Main.py
+export FLASK_ENV=development
 ``
- 
+
+Para ejecutarlo usar el comando
+
+``
+python -m flask run
+``
+
+o
+
+``
+flask run
+`` 
 
 
 
