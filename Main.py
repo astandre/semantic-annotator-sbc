@@ -47,30 +47,31 @@ print("Reading graph".center(30, "+"))
 # Reading graph
 grafo_av = rdflib.Graph()
 # Nuestro archivo ttl
-grafo_av.parse("statements.rdf", format="xml")
+grafo_av.parse("data.rdf", format="xml")
 
 keywords = []
-
+links =[]
 print("Getting resources to annotate".center(30, "+"))
 resources = session.query(Resource).filter(
     Resource.context_id == context_id, Resource.potential == False)
 for res in resources:
     for s, p, o in grafo_av.triples((None, None, rdflib.Literal(res.name))):
         keywords.append(res.name)
+        links.append(s)
         query_result_graph = rdflib.Graph()
         query_result_graph += grafo_av.triples((s, None, None))
         # lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
-        f = open(dir_path + '/repositorios/' + o + ".html",
-                 'w')
-        message = """<html>
-        <head></head>
-        <body>
-        <h1>{0}</h1>
-        {1}
-        </body>
-        </html>""".format(o, formato_html(dict_triples(query_result_graph)))
-        f.write(message)
-        f.close()
+        # f = open(dir_path + '/repositorios/' + o + ".html",
+        #          'w')
+        # message = """<html>
+        # <head></head>
+        # <body>
+        # <h1>{0}</h1>
+        # {1}
+        # </body>
+        # </html>""".format(o, formato_html(dict_triples(query_result_graph)))
+        # f.write(message)
+        # f.close()
 
 sentences = session.query(Sentence)
 list_sentences = []
@@ -81,9 +82,15 @@ text = nlp(text)
 for sent in text.sents:
     list_sentences.append(sent.text)
 print("Annotating".center(30, "+"))
+
+links_refinados=[]
+for i in links:
+    links_refinados.append(str(i).replace("http://localhost:8080/","http://localhost:8080/sbc/page/"))
+
+
 dict_k = {}
-for i in keywords:
-    dict_k[i] = i
+for i,j in zip(keywords,links_refinados):
+    dict_k[i] = j
 
 print("Resources used".center(30, "+"))
 
@@ -94,12 +101,12 @@ print("\n")
 #     print(i)
 completa = ''.join(e for e in list_sentences)
 
-link = dir_path + "/repositorios/"
+
+
 for i, j in dict_k.items():
-    completa = completa.replace(i, "<a href=\"" + link + i + ".html\">" + i + "</a>")
+    completa = completa.replace(i, "<a href=\"" + j + "\">" + i + "</a>")
 
 print("Appending info".center(30, "+"))
-print(completa)
 
 try:
     index = open(dir_path + '/repositorios/index.html', 'w')

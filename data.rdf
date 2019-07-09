@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:ns0="http://www.arrozverde.org/ontology/">
+
+  <rdf:Description rdf:about="http://www.arrozverde.org/ontology/Persona">
+    <owl:sameAs rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://localhost:8080/Jorge_Glass">
+    <rdf:type rdf:resource="http://www.arrozverde.org/ontology/Persona"/>
+    <ns0:name>Jorge Glass</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:vive_en>
+      <ns0:Lugar rdf:about="http://localhost:8080/Ecuador">
+        <ns0:name>Ecuador</ns0:name>
+      </ns0:Lugar>
+    </ns0:vive_en>
+
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Lider"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Negociador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Gestionador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Recaudador"/>
+    <ns0:tienePuesto>
+      <ns0:Puesto rdf:about="http://localhost:8080/Vicepresidente">
+        <ns0:name>Vicepresidente</ns0:name>
+      </ns0:Puesto>
+    </ns0:tienePuesto>
+
+  </rdf:Description>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Cai_Runguo">
+    <ns0:name>Cai Runguo</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Lider"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Negociador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Gestionador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Recaudador"/>
+    <ns0:tienePuesto rdf:resource="http://localhost:8080/Representante"/>
+    <ns0:trabajoEn>
+      <ns0:Empresa rdf:about="http://localhost:8080/Sinohydro_Corporation">
+        <ns0:name>Sinohydro Corporation</ns0:name>
+        <ns0:tieneAlias>
+          <ns0:Alias rdf:about="http://localhost:8080/V14">
+            <ns0:name>V14</ns0:name>
+          </ns0:Alias>
+        </ns0:tieneAlias>
+
+      </ns0:Empresa>
+    </ns0:trabajoEn>
+
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Rafael_Correa">
+    <ns0:name>Rafael Correa</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Jose_Santos">
+    <ns0:name>Jorge Santos</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Odebretch"/>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Geraldo_Pereira_de_Souza">
+    <ns0:name>Geraldo Pereira de Souza</ns0:name>
+    <ns0:name>Geraldo Luiz Pereira de Souza</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Odebretch"/>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Carlos_Polit">
+    <ns0:name>Carlos Polit</ns0:name>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Maria_de_los_Angeles_Duarte">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Lider"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Negociador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Gestionador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Recaudador"/>
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:name>Maria de los Angeles Duarte</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Walter_Solis">
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Lider"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Negociador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Gestionador"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/Recaudador"/>
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tienePuesto>
+      <ns0:Puesto rdf:about="http://localhost:8080/Secretario_Nacional_del_Agua">
+        <ns0:name>Secretario Nacional del Agua</ns0:name>
+      </ns0:Puesto>
+    </ns0:tienePuesto>
+
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:name>Walter Solis</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Maria_Pamela_Martinez_Loayza">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tienePuesto rdf:resource="http://localhost:8080/Asesora_de_la_Presidencia_de_la_Republica"/>
+    <ns0:name>Maria Pamela Martinez Loayza</ns0:name>
+    <ns0:name>Pamela Martínez</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Maria_Augusta_Enriquez_Argudo">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tieneRol>
+      <ns0:Rol rdf:about="http://localhost:8080/Participante">
+        <ns0:name>Participante</ns0:name>
+      </ns0:Rol>
+    </ns0:tieneRol>
+
+    <ns0:tieneRol rdf:resource="http://localhost:8080/participante"/>
+    <ns0:name>Maria Augusta Enriquez Argudo</ns0:name>
+    <ns0:tienePuesto rdf:resource="http://localhost:8080/Asesora_de_la_Presidencia_de_la_Republica"/>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Laura_Teran_Betancourt">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tieneRol rdf:resource="http://localhost:8080/recaudador"/>
+    <ns0:tienePuesto rdf:resource="http://localhost:8080/Asistente_de_presidencia"/>
+    <ns0:name>Laura Teram Betancourt</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Victoria_Andrade">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tienePuesto rdf:resource="http://localhost:8080/Asistente_de_presidencia"/>
+    <ns0:name>Victoria Andrade</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/No_identificado">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:name>No identificado</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Monica_Hernandez_Vasconez">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Grupo_Azul"/>
+    <ns0:name>Monica Hernandez Vasconez</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Tomislav_Topic_Granados">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Telconet"/>
+    <ns0:name>Tomislav Topic Grandados</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Alexis_Mera">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tienePuesto>
+      <ns0:Puesto rdf:about="http://localhost:8080/Secretario_juridico_de_la_Presidencia_del_Ecuador">
+        <ns0:name>Secretario juridico de la Presidencia del Ecuador</ns0:name>
+      </ns0:Puesto>
+    </ns0:tienePuesto>
+
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:name>Alexis Mora</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Viviana_Patricia_Bonilla_Salcedo">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:tienePuesto>
+      <ns0:Puesto rdf:about="http://localhost:8080/Ex_candidata_a_la_Alcaldia_de_Guayaquil">
+        <ns0:name>Ex Candidata a la Alcaldia de Guayaquil</ns0:name>
+      </ns0:Puesto>
+    </ns0:tienePuesto>
+
+    <ns0:perteneceA rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:name>Viviana Patricia Bonilla Salcedo</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Carlos_Eloy_Viteri">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:name>Carlos Eloy Viteri</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Persona rdf:about="http://localhost:8080/Bolivar_Sanchez_Ribadeneira">
+    <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
+    <ns0:name>Bolivar Sanchez Ribadeneira</ns0:name>
+  </ns0:Persona>
+
+  <ns0:Rol rdf:about="http://localhost:8080/Lider">
+    <ns0:name>Lider</ns0:name>
+  </ns0:Rol>
+
+  <ns0:Rol rdf:about="http://localhost:8080/Negociador">
+    <ns0:name>Negociador</ns0:name>
+  </ns0:Rol>
+
+  <ns0:Rol rdf:about="http://localhost:8080/Gestionador">
+    <ns0:name>Gestionador</ns0:name>
+  </ns0:Rol>
+
+  <ns0:Rol rdf:about="http://localhost:8080/Recaudador">
+    <ns0:name>Recaudador</ns0:name>
+  </ns0:Rol>
+
+  <ns0:Rol rdf:about="http://localhost:8080/Distribuidor_dinero">
+    <ns0:name>Distribuidor del dinero</ns0:name>
+  </ns0:Rol>
+
+  <ns0:Alias rdf:about="http://localhost:8080/L1-JG">
+    <ns0:name>L1-JG</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/L2-MD">
+    <ns0:name>L2-MD</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/L3-WS">
+    <ns0:name>L3-WS</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/C3-PM">
+    <ns0:name>C3-PM</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/C1-OM">
+    <ns0:name>C1-OM</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/C2-ME">
+    <ns0:name>C2-ME</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V7">
+    <ns0:name>V7</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V8">
+    <ns0:name>V8</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V12">
+    <ns0:name>V12</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V11">
+    <ns0:name>V11</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V9">
+    <ns0:name>V9</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Alias rdf:about="http://localhost:8080/V10">
+    <ns0:name>V10</ns0:name>
+  </ns0:Alias>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/Odebretch">
+    <ns0:name>Norberto Odebretch</ns0:name>
+    <ns0:name>Constructora Norberto Odebrecht</ns0:name>
+    <ns0:name>Odebrecht</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V7"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/SK_Engineering_Construction">
+    <ns0:name>SK South Korea Engineering &amp; Construction</ns0:name>
+    <ns0:name>SK Engineering &amp; Construction</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V8"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/Grupo_Azul">
+    <ns0:name>William Phillips Grupo Azul</ns0:name>
+    <ns0:name>Grupo Azul</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V12"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/Telconet">
+    <ns0:name>Tomislav Topic Telconet</ns0:name>
+    <ns0:name>Telconet</ns0:name>
+    <ns0:name>TELCONET</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V11"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/China_International_Water_Electric_Corp-CWE">
+    <ns0:name>China International Water &amp; Electric Corp-CWE</ns0:name>
+    <ns0:name>China International Water &amp; Electric Corp</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V9"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/Constructora_Nacional_Fopeca_y_Sanrib_Corporation">
+    <ns0:name>Constructora Nacional Fopeca y Sanrib Corporation</ns0:name>
+    <ns0:tieneAlias rdf:resource="http://localhost:8080/V10"/>
+  </ns0:Empresa>
+
+  <ns0:Empresa rdf:about="http://localhost:8080/NexoGlobal">
+    <ns0:name>NexoGlobal</ns0:name>
+  </ns0:Empresa>
+
+  <ns0:Puesto rdf:about="http://localhost:8080/Asesora_de_la_Presidencia_de_la_Republica">
+    <ns0:name>Asesora de la Presidencia de la Republica</ns0:name>
+    <ns0:name>asesora del expresidente</ns0:name>
+  </ns0:Puesto>
+
+  <ns0:Puesto rdf:about="http://localhost:8080/Asistente_de_presidencia">
+    <ns0:name>Asistente de presidencia</ns0:name>
+  </ns0:Puesto>
+
+  <ns0:Puesto rdf:about="http://localhost:8080/Asambleista">
+    <ns0:name>Asambleista</ns0:name>
+  </ns0:Puesto>
+
+  <ns0:Caso rdf:about="http://localhost:8080/ArrozVerde">
+    <ns0:name>Arroz Verde</ns0:name>
+  </ns0:Caso>
+
+  <ns0:PartidoPolitico rdf:about="http://localhost:8080/Alianza_Pais">
+    <ns0:name>Alianza Pais</ns0:name>
+    <ns0:name>Alianza País</ns0:name>
+    <ns0:name>Alianza PAIS</ns0:name>
+  </ns0:PartidoPolitico>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion1">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>500000</ns0:monto>
+    <ns0:fecha>9/9/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Aportacion rdf:about="http://localhost:8080/Aportacion2">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>500000</ns0:monto>
+    <ns0:fecha>10/21/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Aportacion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion3">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>150000</ns0:monto>
+    <ns0:fecha>11/12/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion4">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>300000</ns0:monto>
+    <ns0:fecha>11/21/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion5">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>100000</ns0:monto>
+    <ns0:fecha>12/02/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion6">
+    <ns0:desde rdf:resource="http://localhost:8080/Grupo_Azul"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>20000</ns0:monto>
+    <ns0:fecha>12/09/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion7">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>500000</ns0:monto>
+    <ns0:fecha>12/16/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion8">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>439900</ns0:monto>
+    <ns0:fecha>12/17/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion9">
+    <ns0:desde rdf:resource="http://localhost:8080/Oderbrecht"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>10100</ns0:monto>
+    <ns0:fecha>12/18/13</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion10">
+    <ns0:desde rdf:resource="http://localhost:8080/Telconet"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>100000</ns0:monto>
+    <ns0:fecha>1/3/14</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion11">
+    <ns0:desde rdf:resource="http://localhost:8080/Telconet"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>250000</ns0:monto>
+    <ns0:fecha>1/10/14</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion12">
+    <ns0:desde rdf:resource="http://localhost:8080/Telconet"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>150000</ns0:monto>
+    <ns0:fecha>1/15/14</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Transaccion rdf:about="http://localhost:8080/Transaccion13">
+    <ns0:desde rdf:resource="http://localhost:8080/Telconet"/>
+    <ns0:hacia rdf:resource="http://localhost:8080/Alianza_Pais"/>
+    <ns0:monto>150000</ns0:monto>
+    <ns0:fecha>1/15/14</ns0:fecha>
+    <ns0:metodo>efectivo</ns0:metodo>
+  </ns0:Transaccion>
+
+  <ns0:Contrato rdf:about="http://localhost:8080/Contrato1">
+    <ns0:monto>4000 millones</ns0:monto>
+  </ns0:Contrato>
+
+</rdf:RDF>
