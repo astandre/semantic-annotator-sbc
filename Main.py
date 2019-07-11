@@ -28,7 +28,7 @@ print("Reading graph".center(30, "+"))
 # Reading graph
 grafo_av = rdflib.Graph()
 # Nuestro archivo ttl
-grafo_av.parse("statements.rdf", format="xml")
+grafo_av.parse("data.rdf", format="xml")
 
 app = Flask(__name__)
 
@@ -50,6 +50,7 @@ def annotate():
         context_id = 1
         keywords = []
         cont_key = {}
+        links =[]
         # DB connection
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -59,6 +60,7 @@ def annotate():
         for res in resources:
             for s, p, o in grafo_av.triples((None, None, rdflib.Literal(res.name))):
                 keywords.append(res.name)
+                links.append(s)
                 query_result_graph = rdflib.Graph()
                 query_result_graph += grafo_av.triples((s, None, None))
                 cont_key.update({res.name: res.type})
@@ -76,13 +78,32 @@ def annotate():
                 # f.close()
 
         list_sentences = []
+        # for sentence in sentences:
+        #   list_sentences.append(sentence.sentence)
+        print("Converting text".center(30, "+"))
         text = nlp(text)
         for sent in text.sents:
             list_sentences.append(sent.text)
         print("Annotating".center(30, "+"))
+
+        links_refinados=[]
+        for i in links:
+            links_refinados.append(str(i).replace("http://localhost:8080/","http://localhost:8080/sbc/page/"))
+
+
         dict_k = {}
-        for i in keywords:
-            dict_k[i] = i
+        for i,j in zip(keywords,links_refinados):
+            dict_k[i] = j
+
+
+#        list_sentences = []
+#        text = nlp(text)
+#        for sent in text.sents:
+#            list_sentences.append(sent.text)
+#        print("Annotating".center(30, "+"))
+#        dict_k = {}
+#        for i in keywords:
+#            dict_k[i] = i
 
         print("Resources used".center(30, "+"))
 
@@ -113,11 +134,10 @@ def annotate():
                     res_count.update({cont_key[i]: conteo_entidad})
 
         # TODO replace for real link to data
-        link = "/repositorios/"
+        #link = "/repositorios/"
 
         for i, j in dict_k.items():
-            completa = completa.replace(i, "<a href=\"" + link + i + ".html\">" + i + "</a>")
-
+            completa = completa.replace(i, "<a href=\"" + j + "\">" + i + "</a>")
         print(res_count)
         print("Appending info".center(30, "+"))
         print(completa)
