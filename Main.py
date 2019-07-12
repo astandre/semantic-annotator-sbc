@@ -1,9 +1,9 @@
 import spacy
-from flask import app
+# from flask import app
+from rdflib import RDF
 from sqlalchemy.orm import sessionmaker
 from Models import *
 import sqlalchemy as db
-from utils import dict_triples, formato_html
 import rdflib
 from flask import request
 import os
@@ -12,6 +12,7 @@ from flask import render_template
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 nlp = spacy.load("es_core_news_sm")
+
 
 # context = "Arroz Verde"
 # # Adding default contexts
@@ -23,6 +24,15 @@ nlp = spacy.load("es_core_news_sm")
 #     session.add(context)
 #     session.commit()
 #     context_id = context.id
+
+def clean_uri(uri):
+    if uri.find('#') != -1:
+        special_char = '#'
+    else:
+        special_char = '/'
+    index = uri.rfind(special_char)
+    return uri[index + 1:len(uri)]
+
 
 print("Reading graph".center(30, "+"))
 # Reading graph
@@ -50,7 +60,7 @@ def annotate():
         context_id = 1
         keywords = []
         cont_key = {}
-        links =[]
+        links = []
         # DB connection
         Session = sessionmaker(bind=engine)
         session = Session()
@@ -63,19 +73,11 @@ def annotate():
                 links.append(s)
                 query_result_graph = rdflib.Graph()
                 query_result_graph += grafo_av.triples((s, None, None))
-                cont_key.update({res.name: res.type})
-                # lista_triple = [s, p, o in query_result_graph.triples((s, p, o))]
-                # f = open(dir_path + '/repositorios/' + o + ".html",
-                #          'w')
-                # message = """<html>
-                # <head></head>
-                # <body>
-                # <h1>{0}</h1>
-                # {1}
-                # </body>
-                # </html>""".format(o, formato_html(dict_triples(query_result_graph)))
-                # f.write(message)
-                # f.close()
+                # cont_key.update({res.name: res.type})
+
+                for s2, p2, o2 in grafo_av.triples((s, RDF.type, None)):
+                    # print(s2, p2, o2)
+                    cont_key.update({res.name: clean_uri(o2)})
 
         list_sentences = []
         # for sentence in sentences:
@@ -86,24 +88,22 @@ def annotate():
             list_sentences.append(sent.text)
         print("Annotating".center(30, "+"))
 
-        links_refinados=[]
+        links_refinados = []
         for i in links:
-            links_refinados.append(str(i).replace("http://localhost:8080/","http://localhost:8080/sbc/page/"))
-
+            links_refinados.append(str(i).replace("http://localhost:8080/", "http://localhost:8080/sbc/page/"))
 
         dict_k = {}
-        for i,j in zip(keywords,links_refinados):
+        for i, j in zip(keywords, links_refinados):
             dict_k[i] = j
 
-
-#        list_sentences = []
-#        text = nlp(text)
-#        for sent in text.sents:
-#            list_sentences.append(sent.text)
-#        print("Annotating".center(30, "+"))
-#        dict_k = {}
-#        for i in keywords:
-#            dict_k[i] = i
+        #        list_sentences = []
+        #        text = nlp(text)
+        #        for sent in text.sents:
+        #            list_sentences.append(sent.text)
+        #        print("Annotating".center(30, "+"))
+        #        dict_k = {}
+        #        for i in keywords:
+        #            dict_k[i] = i
 
         print("Resources used".center(30, "+"))
 
@@ -114,6 +114,8 @@ def annotate():
         print(keywords)
         print(len(keywords))
 
+        print("Cont KEY")
+
         print(cont_key)
         print(len(cont_key))
 
@@ -122,64 +124,31 @@ def annotate():
         print("Count")
         # print(cont_key)
         res_count = {}
+        entidades = {}
         for i, j in dict_k.items():
             conteo_entidad = completa.count(i)
             # print(i, conteo_entidad)
             if conteo_entidad > 0 and i in cont_key:
-                # print(cont_key[i], conteo_entidad)
+                print(cont_key[i], conteo_entidad, clean_uri(j))
                 if cont_key[i] in res_count:
                     aux = res_count[cont_key[i]]
                     res_count.update({cont_key[i]: conteo_entidad + aux})
+                    list_aux = entidades[cont_key[i]]
+                    list_aux.append(clean_uri(j).replace("_", " "))
+                    entidades.update({cont_key[i]: list_aux})
                 else:
                     res_count.update({cont_key[i]: conteo_entidad})
+                    entidades.update({cont_key[i]: [clean_uri(j).replace("_", " ")]})
 
-        # TODO replace for real link to data
-        #link = "/repositorios/"
+        print(res_count)
+        print(entidades)
 
         for i, j in dict_k.items():
             completa = completa.replace(i, "<a href=\"" + j + "\">" + i + "</a>")
-        print(res_count)
+
         print("Appending info".center(30, "+"))
         print(completa)
-        #
-        # try:
-        #     index = open(dir_path + '/repositorios/index.html', 'w')
-        # except IOError:
-        #     index = open(dir_path + '/repositorios/index.html', 'x')
-        #     index.close()
-        #     print("Creating index.html".center(30, "+"))
-        # styles = """
-        #     h1{
-        #         text-align: center;
-        #         padding: 1em 0;
-        #     }
-        #     #cont_main{
-        #         width: 90%;
-        #         margin: auto;
-        #         padding: 10px 20px;
-        #         border: 1px solid #ccc;
-        #     }
-        #     #cont_main:hover{
-        #         box-shadow: 0 0 3px rgba(89, 89, 89, 1);
-        #     }
-        # """
-        #
-        # message = """<html>
-        #                     <head>
-        #                         <meta charset="UTF-8">
-        #                         <title>{0}</title>
-        #                         <style>{1}</style>
-        #                     </head>
-        #                     <body>
-        #                         <h1>{0}</h1>
-        #                         <section id="cont_main">
-        #                             <p>{2}</p>
-        #                         </section>
-        #                     </body>
-        #                 </html>""".format("Anotador Semántico", styles, completa)
-        # index.write(message)
-        # index.close()
 
-        return {"data": completa, "count": res_count}
+        return {"data": completa, "count": res_count, "entidades": entidades}
     else:
         return {"error": "Method now allowed"}

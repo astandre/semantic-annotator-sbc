@@ -31,15 +31,21 @@
     </div>
     <button id="submit" type="button" class="btn btn-primary">Anotar</button>
     <button id="example" type="button" class="btn  btn-info">Example</button>
+    <h2 class="results-detail" style=" display: none">Results</h2>
     <div id="result">
     </div>
+    <h3 class="results-detail" style=" display: none">Conteo</h3>
     <div id="count">
+    </div>
+    <h3 class="results-detail" style=" display: none">Detalle</h3>
+    <div id="detail">
     </div>
 </div>
 
 <script type="text/javascript">
     var csrftoken = Cookies.get('csrftoken');
     var URL = "http://127.0.0.1:5000/anotate";
+    // $(".results-detail").hide();
     $("#example").click(function () {
         var example = "El caso Receta de Arroz Verde 502 es una investigación publicada por el portal digital Mil Hojas. El portal digital reveló un correo electrónico recibido por Pamela Martínez supuesta asesora del expresidente Rafael Correa según Mil Hoja con un documento titulado Receta de Arroz Verde 502.  Según la investigación, el remitente del correo electrónico sería Geraldo Luiz Pereira de Souza, encargado de la administración y finanzas de Odebrecht en Ecuador. El mail demuestra presuntos aportes entregados por empresas multinacionales como Odebrecht al movimiento Alianza País desde noviembre de 2013 a febrero de 201 periodo en el que el expresidente Rafael Correa lideraba esa organización política. Según Mil Hojas, las donaciones alcanzarían los 11,6 millones de dólares. Las empresas que habrían realizado los aportes son: Constructora Norberto Odebrecht, SK Engineering & Construction, Sinohydro Corporation, Grupo Azul, Telconet, China International Water & Electric Corp.";
         $('#raw-text').val(example);
@@ -47,6 +53,7 @@
 
     $("#submit").click(function () {
         // alert("Handler for .click() called.");
+        $(".results-detail").show();
         var query = {
             "text": document.getElementById("raw-text").value
         };
@@ -57,11 +64,28 @@
                 console.log(respJson);
                 $('#raw-text').val('');
                 $('#result').empty().append(respJson["data"]);
+                var detail = $('#detail').empty();
                 var conteo = $('#count').empty();
 
                 for (var key in respJson["count"]) {
                     console.log(key, respJson["count"][key]);
-                    conteo.append('<button type="button" class="btn  btn-light">' + key + ' ' + respJson["count"][key] + '</button>')
+                    conteo.append('<button type="button" class="btn btn-light">' + key + ' ' + respJson["count"][key] + '</button>')
+                }
+
+                for (key in respJson["entidades"]) {
+                    // console.log(key);
+                    //TODO set ontology link
+                    detail.append('<a href="http://localhost:8080/sbc/ontology/' + key + '" class="btn btn-info btn-lg" role="button" >' + key + '</a>');
+                    detail.append('<br>');
+                    detail.append('<br>');
+                    for (var i  in  respJson["entidades"][key]) {
+                        // console.log(respJson["entidades"][key][i]);
+                        detail.append(' <a href="http://localhost:8080/sbc/page/' + respJson["entidades"][key][i].replace(/ /g, "_") + '" class="btn btn-success " role="button" >' + respJson["entidades"][key][i] + '</a>');
+
+                    }
+                    detail.append('<br>');
+                    detail.append('<br>');
+                    // conteo.append('<button type="button" class="btn  btn-light">' + key + ' ' + respJson["count"][key] + '</button>')
                 }
 
             },
