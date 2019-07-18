@@ -10,6 +10,10 @@
   <rdf:Description rdf:about="http://localhost:8080/Jorge_Glass">
     <rdf:type rdf:resource="http://www.arrozverde.org/ontology/Persona"/>
     <ns0:name>Jorge Glass</ns0:name>
+    <ns0:name>Jorge David Glas Espinel</ns0:name>
+    <ns0:name>J.G.</ns0:name>
+    <ns0:name>Vicepresidente Glass</ns0:name>
+    <ns0:name>Vidrio</ns0:name>
     <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
     <ns0:vive_en>
       <ns0:Lugar rdf:about="http://localhost:8080/Ecuador">
@@ -54,6 +58,14 @@
 
   <ns0:Persona rdf:about="http://localhost:8080/Rafael_Correa">
     <ns0:name>Rafael Correa</ns0:name>
+    <ns0:name>Rafael Vicente Correa Delgado</ns0:name>
+    <ns0:name>Presidente Correa</ns0:name>
+    <ns0:name>R.C.</ns0:name>
+    <ns0:name>Economista Correa</ns0:name>
+    <ns0:name>Mashi</ns0:name>
+    <ns0:name>Mashi Rafael</ns0:name>
+    <ns0:name>Mashi Correa</ns0:name>
+    <ns0:name>Rafico</ns0:name>
     <ns0:relacionadoCon rdf:resource="http://localhost:8080/ArrozVerde"/>
   </ns0:Persona>
 
