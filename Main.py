@@ -144,7 +144,7 @@ def annotate():
         print(entidades)
 
         for i, j in dict_k.items():
-            completa = completa.replace(i, "<a href=\"" + j + "\">" + i + "</a>")
+            completa = completa.replace(i, "<a class='btn btn-success btn-sm' role='button' href=\"" + j + "\">" + i + "</a>")
 
         print("Appending info".center(30, "+"))
         print(completa)
